@@ -1,0 +1,14 @@
+[package]
+name = "hostnode"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Runs the tsnode Tailscale stack on a Linux/macOS host for validation: joins a tailnet and serves the snapshot HTTP server with a test image"
+
+[dependencies]
+tsnode = { path = "../../crates/tsnode" }
+adapter-core = { path = "../../crates/adapter-core" }
+rustls = { version = "0.23", default-features = false, features = ["std", "ring", "tls12", "logging"] }
+webpki-roots = "0.26"
+log = "0.4"
+env_logger = "0.11"
