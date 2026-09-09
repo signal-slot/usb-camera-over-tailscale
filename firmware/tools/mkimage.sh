@@ -30,9 +30,9 @@ idf=.embuild/espressif/esp-idf/v5.3.3
 mkdir -p "$out"
 "$py" "$idf/components/partition_table/gen_esp32part.py" "$partitions" "$out/partition-table.bin" >/dev/null
 "$py" -m esptool --chip esp32s3 elf2image --flash_mode "$flash_mode" --flash_freq 80m --flash_size "${flash_mb}MB" \
-  -o "$out/app.bin" "$target/camera-over-tailscale-firmware" >/dev/null
+  -o "$out/app.bin" "$target/usb-camera-over-tailscale-firmware" >/dev/null
 cp "$target/bootloader.bin" "$out/bootloader.bin"
 "$py" -m esptool --chip esp32s3 merge_bin --flash_mode "$flash_mode" --flash_freq 80m --flash_size "${flash_mb}MB" \
-  -o "$out/camera-over-tailscale-$variant.bin" \
+  -o "$out/usb-camera-over-tailscale-$variant.bin" \
   0x0 "$out/bootloader.bin" 0x8000 "$out/partition-table.bin" 0x10000 "$out/app.bin" >/dev/null
 ls -l "$out"

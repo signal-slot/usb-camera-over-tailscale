@@ -1,4 +1,4 @@
-//! camera-over-tailscale firmware for ESP32-S3 modules with PSRAM.
+//! usb-camera-over-tailscale firmware for ESP32-S3 modules with PSRAM.
 //!
 //! Boot flow:
 //! - Setup Mode (BOOT button held, or Wi-Fi/Tailscale not yet set up): the
@@ -36,7 +36,7 @@ pub const FIRMWARE_VERSION: &str = env!("CARGO_PKG_VERSION");
 fn main() -> Result<()> {
     esp_idf_svc::sys::link_patches();
     EspLogger::initialize_default();
-    info!("camera-over-tailscale firmware {FIRMWARE_VERSION} starting");
+    info!("usb-camera-over-tailscale firmware {FIRMWARE_VERSION} starting");
 
     let peripherals = Peripherals::take()?;
     let sysloop = EspSystemEventLoop::take()?;

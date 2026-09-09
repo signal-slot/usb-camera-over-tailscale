@@ -1,5 +1,5 @@
 [package]
-name = "camera-over-tailscale-firmware"
+name = "usb-camera-over-tailscale-firmware"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
@@ -7,7 +7,7 @@ description = "ESP32-S3 firmware: interactive setup shell, USB video (UVC) host,
 rust-version = "1.77"
 
 [[bin]]
-name = "camera-over-tailscale-firmware"
+name = "usb-camera-over-tailscale-firmware"
 harness = false
 
 [profile.release]

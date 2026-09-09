@@ -195,7 +195,7 @@ impl<'a, C: Console, P: Platform> Shell<'a, C, P> {
         let st = self.platform.status();
         self.line("");
         self.line(&format!(
-            "camera-over-tailscale {} - {}",
+            "usb-camera-over-tailscale {} - {}",
             st.firmware,
             if st.setup_mode {
                 "setup mode"

@@ -1,4 +1,4 @@
-# camera-over-tailscale
+# usb-camera-over-tailscale
 
 [日本語](README-ja.md)
 
@@ -84,14 +84,14 @@ See "Power and wiring" below for the safety rule that follows from it.
 
 ### Flash from a browser
 
-Open [signal-slot.github.io/camera-over-tailscale](https://signal-slot.github.io/camera-over-tailscale/) in Chrome or Edge to flash and configure the board without installing anything.
+Open [signal-slot.github.io/usb-camera-over-tailscale](https://signal-slot.github.io/usb-camera-over-tailscale/) in Chrome or Edge to flash and configure the board without installing anything.
 The page opens the board's USB Serial/JTAG port with WebSerial and writes the CI-built binaries with ESP Web Tools (esptool-js).
 A terminal on the same page runs the setup wizard.
 It works on Windows 10 and later, macOS, Linux and ChromeOS; it does not work in Firefox, Safari or on phones.
 Connect the native USB port. The COM port (CH343) needs a driver on Windows and is not used.
 
 Pick the module variant on the page from the marking on the module's metal can (for example `ESP32-S3-WROOM-1-N16R8`).
-CI (GitHub Actions) builds every variant on each push. Tags matching `v*` also attach `camera-over-tailscale-<variant>.bin` (bootloader, partition table and app merged into one file) to a release.
+CI (GitHub Actions) builds every variant on each push. Tags matching `v*` also attach `usb-camera-over-tailscale-<variant>.bin` (bootloader, partition table and app merged into one file) to a release.
 The merged file can be written with `esptool write_flash 0x0`, but it also overwrites the NVS area with 0xFF, which erases the configuration and registration.
 Updates from the page write only the three regions and keep the configuration.
 
@@ -105,7 +105,7 @@ screen /dev/ttyACM0 115200
 ```
 
 ```text
-camera-over-tailscale 0.1.0 - setup mode
+usb-camera-over-tailscale 0.1.0 - setup mode
 Press Enter to start setup, or type a command:
 === Setup ===
 Scanning Wi-Fi...

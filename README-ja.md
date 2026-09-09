@@ -1,4 +1,4 @@
-# camera-over-tailscale
+# usb-camera-over-tailscale
 
 [English](README.md)
 
@@ -85,14 +85,14 @@ PSRAM 付きで USB-C が 2 つ（COM と native USB）ある ESP32-S3 ボード
 
 ### ブラウザから書き込む
 
-Chrome か Edge で [signal-slot.github.io/camera-over-tailscale](https://signal-slot.github.io/camera-over-tailscale/) を開くと、ソフトウェアを何も入れずに書き込みと初期設定ができる。
+Chrome か Edge で [signal-slot.github.io/usb-camera-over-tailscale](https://signal-slot.github.io/usb-camera-over-tailscale/) を開くと、ソフトウェアを何も入れずに書き込みと初期設定ができる。
 ページは WebSerial でボードの USB Serial/JTAG ポートを開き、ESP Web Tools（esptool-js）で CI がビルドしたバイナリを書く。
 同じページの端末でセットアップウィザードも操作できる。
 Windows 10 以降、macOS、Linux、ChromeOS で動き、Firefox と Safari とスマートフォンでは動かない。
 つなぐのは native 側の USB で、COM 側（CH343）は Windows でドライバが要るので使わない。
 
 ページではモジュールの金属カバーの刻印（`ESP32-S3-WROOM-1-N16R8` など）から型番を選ぶ。
-CI（GitHub Actions）は push のたびに全型番をビルドし、`v*` タグでは Release にも `camera-over-tailscale-<型番>.bin`（bootloader、パーティション表、アプリを結合した 1 本）を添付する。
+CI（GitHub Actions）は push のたびに全型番をビルドし、`v*` タグでは Release にも `usb-camera-over-tailscale-<型番>.bin`（bootloader、パーティション表、アプリを結合した 1 本）を添付する。
 結合したものは `esptool write_flash 0x0` で書けるが、NVS の領域も 0xFF で上書きするので設定と登録が消える。
 ページからの更新は 3 つの領域だけを書くので設定は残る。
 
@@ -106,7 +106,7 @@ screen /dev/ttyACM0 115200
 ```
 
 ```text
-camera-over-tailscale 0.1.0 - setup mode
+usb-camera-over-tailscale 0.1.0 - setup mode
 Press Enter to start setup, or type a command:
 === Setup ===
 Scanning Wi-Fi...

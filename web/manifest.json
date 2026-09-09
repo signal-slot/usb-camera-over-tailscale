@@ -1,5 +1,5 @@
 {
-  "name": "camera-over-tailscale (__VARIANT__)",
+  "name": "usb-camera-over-tailscale (__VARIANT__)",
   "version": "__VERSION__",
   "new_install_prompt_erase": true,
   "builds": [

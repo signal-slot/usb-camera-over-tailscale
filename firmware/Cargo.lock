@@ -162,20 +162,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
-name = "camera-over-tailscale-firmware"
-version = "0.1.0"
-dependencies = [
- "adapter-core",
- "anyhow",
- "embuild",
- "esp-idf-hal",
- "esp-idf-svc",
- "esp-idf-sys",
- "log 0.4.34",
- "tsnode",
-]
-
-[[package]]
 name = "camino"
 version = "1.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1742,6 +1728,20 @@ checksum = "fc1de2c688dc15305988b563c3854064043356019f97a4b46276fe734c4f07ea"
 dependencies = [
  "crypto-common",
  "subtle",
+]
+
+[[package]]
+name = "usb-camera-over-tailscale-firmware"
+version = "0.1.0"
+dependencies = [
+ "adapter-core",
+ "anyhow",
+ "embuild",
+ "esp-idf-hal",
+ "esp-idf-svc",
+ "esp-idf-sys",
+ "log 0.4.34",
+ "tsnode",
 ]
 
 [[package]]
