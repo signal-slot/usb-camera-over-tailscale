@@ -62,6 +62,24 @@ jobs:
           key: firmware-${{ matrix.variant }}-${{ hashFiles('firmware/Cargo.lock', 'firmware/sdkconfig.defaults', 'firmware/variants/*', 'firmware/.cargo/config.toml', 'firmware/build.rs') }}
           restore-keys: firmware-${{ matrix.variant }}-
 
+      # cmake-rs wipes a build directory whose CMAKE_HOME_DIRECTORY differs from
+      # the current source path, after esp-idf-sys has written its file-api
+      # query into it, and the build then fails with "Failed to list
+      # cmake-file-api reply directory". A cache saved under another checkout
+      # path (repository renamed, fork) triggers this on every run, so drop
+      # such a build directory up front and let ESP-IDF configure afresh.
+      - name: Drop an ESP-IDF build directory from another checkout path
+        working-directory: firmware
+        run: |
+          for cache in target/xtensa-esp32s3-espidf/release/build/esp-idf-sys-*/out/build/CMakeCache.txt; do
+            [ -f "$cache" ] || continue
+            source_dir=$(realpath "$(dirname "$(dirname "$cache")")")
+            if ! grep -qxF "CMAKE_HOME_DIRECTORY:INTERNAL=$source_dir" "$cache"; then
+              echo "stale ESP-IDF build directory: $(dirname "$cache")"
+              rm -rf "$(dirname "$cache")"
+            fi
+          done
+
       - name: Build
         working-directory: firmware
         run: cargo build --release
