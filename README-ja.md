@@ -5,6 +5,8 @@
 PSRAM 付きの ESP32-S3 単体で Tailnet に参加し、USB カメラの画像を HTTP で 1 枚返すアダプタである。
 Tailnet 上の端末から `http://<hostname>/` を開くと JPEG が返る。
 
+![ノート PC に Tailscale 経由でカメラの画像が届く。ESP32-S3 は USB 充電器から給電し、もう一方のポートに USB カメラを挿す](web/overview.webp)
+
 ```text
 Browser ──Tailscale / http://<hostname>/──▶ ESP32-S3 ──USB host──▶ USB カメラ（UVC、MJPEG）
 ```

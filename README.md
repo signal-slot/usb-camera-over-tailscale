@@ -4,6 +4,8 @@
 
 An ESP32-S3 board with PSRAM that joins a tailnet on its own and serves one picture from a USB camera over HTTP: open `http://<hostname>/` from any device on the tailnet and get a JPEG.
 
+![A laptop shows the camera picture through Tailscale; the ESP32-S3 is powered from a USB charger and the USB camera is plugged into its other port](web/overview.webp)
+
 ```text
 Browser ──Tailscale / http://<hostname>/──▶ ESP32-S3 ──USB host──▶ USB camera (UVC, MJPEG)
 ```
